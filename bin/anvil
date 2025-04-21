@@ -1,0 +1,22 @@
+#!/bin/bash
+set -euo pipefail
+
+if [[ -z "${1:-}" ]]; then
+  echo "Usage: $0 <app_path>"
+  exit 1
+fi
+
+APP_PATH="$1"
+ANVIL_PATH="$(dirname "$0")"
+TEMPLATE_PATH="$ANVIL_PATH/../template.rb"
+
+rails new \
+  "$APP_PATH" \
+  --database=postgresql \
+  --skip-asset-pipeline \
+  --skip-javascript \
+  --skip-jbuilder \
+  --skip-hotwire \
+  --skip-test \
+  --template="$TEMPLATE_PATH"
+

@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+exec overmind start -f Procfile.dev "$@"
+exit $?
